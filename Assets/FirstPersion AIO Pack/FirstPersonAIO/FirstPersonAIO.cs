@@ -274,8 +274,8 @@ public class FirstPersonAIO : MonoBehaviour {
 
     private void Start(){
         #region CollectableInstantiation - Start
-        scoreKeeping.score = 0;
-        scoreKeeping.score2 = 0;
+        //scoreKeeping.score = 0;
+        //scoreKeeping.score2 = 0;
         #endregion
 
         #region Music - Start
@@ -771,7 +771,7 @@ public class FirstPersonAIO : MonoBehaviour {
 
             if (GameObject.FindGameObjectsWithTag("Collectable").Length == 0)
             {
-                scoreKeeping.score = 0;
+                //scoreKeeping.score = 0;
                 other.gameObject.SetActive(false);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -782,13 +782,13 @@ public class FirstPersonAIO : MonoBehaviour {
             if (other.gameObject.tag == "Collectable2")
             {
                 gameObject.GetComponent<soundSystem>().PlayPickup();
-                scoreKeeping.score2++;
+                scoreKeeping.score++;
                 other.gameObject.SetActive(false);
             }
 
             if (GameObject.FindGameObjectsWithTag("Collectable2").Length == 0)
             {
-                scoreKeeping.score2 = 0;
+               // scoreKeeping.score2 = 0;
                 other.gameObject.SetActive(false);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
