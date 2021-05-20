@@ -25,7 +25,7 @@ public class LockCursor : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        else if (sceneName == "mainmenu" || sceneName == "level2")
+        else if (sceneName == "mainmenu" || sceneName == "level2" || sceneName == "PauseMenu")
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

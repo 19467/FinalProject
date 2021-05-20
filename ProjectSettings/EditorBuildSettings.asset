@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/level2gameplay.unity
     guid: e39bad5a24938ec4297140ce4f3e8a07
+  - enabled: 1
+    path: Assets/PauseMenu.unity
+    guid: e6551a3c7c6c6b841b628d444859a5dd
   m_configObjects: {}

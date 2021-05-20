@@ -275,6 +275,7 @@ public class FirstPersonAIO : MonoBehaviour {
     private void Start(){
         #region CollectableInstantiation - Start
         scoreKeeping.score = 0;
+        scoreKeeping.score2 = 0;
         #endregion
 
         #region Music - Start
@@ -348,6 +349,7 @@ public class FirstPersonAIO : MonoBehaviour {
 
         FirstPersonAIO.DontDestroyOnLoad(head);
         FirstPersonAIO.DontDestroyOnLoad(capsule);
+        
 
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -752,23 +754,50 @@ public class FirstPersonAIO : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag == "Collectable")
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (sceneName == "SampleScene")
         {
-            gameObject.GetComponent<soundSystem>().PlayPickup();
-            scoreKeeping.score++;
-            other.gameObject.SetActive(false);
+
+            if (other.gameObject.tag == "Collectable")
+            {
+                gameObject.GetComponent<soundSystem>().PlayPickup();
+                scoreKeeping.score++;
+                other.gameObject.SetActive(false);
+            }
+
+            if (GameObject.FindGameObjectsWithTag("Collectable").Length == 0)
+            {
+                scoreKeeping.score = 0;
+                other.gameObject.SetActive(false);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
 
-        if (GameObject.FindGameObjectsWithTag("Collectable").Length == 0)
+        if (sceneName == "level2gameplay")
         {
-            scoreKeeping.score = 0;
-            other.gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (other.gameObject.tag == "Collectable2")
+            {
+                gameObject.GetComponent<soundSystem>().PlayPickup();
+                scoreKeeping.score2++;
+                other.gameObject.SetActive(false);
+            }
+
+            if (GameObject.FindGameObjectsWithTag("Collectable2").Length == 0)
+            {
+                scoreKeeping.score2 = 0;
+                other.gameObject.SetActive(false);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
         }
 
     }
 
-public IEnumerator CameraShake(float Duration, float Magnitude){
+    public IEnumerator CameraShake(float Duration, float Magnitude){
         float elapsed =0;
         while(elapsed<Duration && enableCameraShake){
             playerCamera.transform.localPosition =Vector3.MoveTowards(playerCamera.transform.localPosition, new Vector3(cameraStartingPosition.x+ Random.Range(-1,1)*Magnitude,cameraStartingPosition.y+Random.Range(-1,1)*Magnitude,cameraStartingPosition.z), Magnitude*2);
