@@ -28,13 +28,13 @@ public class scoreKeeping : MonoBehaviour
         // Retrieve the name of this scene.
         string sceneName = currentScene.name;
 
-        if (sceneName == "SampleScene")
-        {
-            scoreboard.text = score.ToString();
-        }
-        if (sceneName == "level2gameplay")
-        {
-            scoreboard.text = score2.ToString();
-        }
+        //if (sceneName == "SampleScene")
+       // {
+        scoreboard.text = score.ToString();
+        //}
+        //if (sceneName == "level2gameplay")
+        //{
+        //    scoreboard.text = score2.ToString();
+        //}
     }
 }

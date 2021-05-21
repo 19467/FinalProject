@@ -15,7 +15,7 @@ public class soundSystem : MonoBehaviour
 
     public void PlayMusic()
     {
-        music.volume = 0.5f;
+        music.volume = 0.35f;
         music.Play();
     }
 
